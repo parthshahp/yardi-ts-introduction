@@ -1,12 +1,12 @@
-type Dashboard = {
+type PmDashboard = {
   troubleId: number;
   trStatus: string;
   estHours: number;
 };
 
 // Simulate getting the data
-function apiEndpoint(): Dashboard[] {
-  let ret: Dashboard[] = [
+function apiEndpoint(): PmDashboard[] {
+  let ret: PmDashboard[] = [
     {
       troubleId: 0,
       trStatus: "In Progress",
@@ -33,32 +33,37 @@ function apiEndpoint(): Dashboard[] {
 }
 
 export function main() {
-  let troubles: Dashboard[] = apiEndpoint();
+  let troubles: PmDashboard[] = apiEndpoint();
 
   widget1(troubles);
   widget2(troubles);
 }
 
-function widget1(troubles: Dashboard[]) {
+function widget1(troubles: PmDashboard[]) {
   console.log("-----Widget 1-----");
+
   console.table(troubles.filter((tr) => tr.trStatus === "In Progress"));
-  console.table(troubles.filter((tr) => tr.assignedButNoHours));
+  // console.table(troubles.filter((tr) => tr.assignedButNoHours));
+
   console.log("------------------");
 }
 
-function widget2(troubles: Dashboard[]) {
-  type widget2Trouble = Dashboard & {
-    assignedButNoHours: boolean;
-  };
-  let newTroubles = troubles as widget2Trouble[];
-  newTroubles.forEach((tr) => {
-    if (tr.trStatus === "Assigned To Dev" && tr.estHours <= 0) {
-      tr.assignedButNoHours = true;
-    }
-  });
+function widget2(troubles: PmDashboard[]) {
+  // type widget2Trouble = PmDashboard & {
+  //   assignedButNoHours: boolean;
+  // };
+  // let newTroubles = troubles as widget2Trouble[];
+
+  // troubles.forEach((tr) => {
+  //   if (tr.trStatus === "Assigned To Dev" && tr.estHours === 0) {
+  //     tr.assignedButNoHours = true;
+  //   }
+  // });
 
   console.log("-----Widget 2-----");
-  console.table(newTroubles.filter((tr) => tr.trStatus === "Assigned To Dev"));
-  console.table(newTroubles.filter((tr) => tr.assignedButNoHours));
+
+  console.table(troubles.filter((tr) => tr.trStatus === "Assigned To Dev"));
+  // console.table(troubles.filter((tr) => tr.assignedButNoHours));
+
   console.log("------------------");
 }

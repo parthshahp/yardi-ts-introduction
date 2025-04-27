@@ -64,6 +64,7 @@ const dashboard_1 = require("./dashboard");
 //   };
 // }
 // // Null Type and Nullable Operator
+// // NEVER explicitly use "any" or "null" types
 // type Task = {
 //   taskId: number;
 //   status: string;
@@ -79,24 +80,19 @@ const dashboard_1 = require("./dashboard");
 //     assignedDate: new Date(),
 //   };
 //
-//   newTask.assignedDate.getDay();
+//   newTask.assignedDate?.getDay();
 //
 //   let newTask2: Task = {
 //     taskId: 1,
 //     status: "In Progress",
 //     requiresPeerReview: true,
-//     assignedDate: null,
+//     assignedDate: undefined,
 //   };
 // }
 // // Type Narrowing
 // type TroubleId = string | number;
 // function addOne(t: TroubleId): TroubleId {
-//   if (typeof t === "number") {
-//     return t + 1;
-//   } else {
-//     console.log(t);
-//     throw Error("TroubleId isn't a number!");
-//   }
+//   return t + 1;
 // }
 // console.log(addOne("hi"));
 // Union Type

@@ -1,7 +1,7 @@
 import { main } from "./dashboard";
 
 // What is a type?
-// A type is a "kind" of data a variable can hold
+// A type is a description for the "kind" of data a variable can hold
 // It is ONLY a static, compile time check
 // There are no memory implications
 
@@ -10,14 +10,15 @@ import { main } from "./dashboard";
 //   let testNum: string = 8; // Incorrect type
 // }
 
+// // Type Alias
 // type Status = string;
-// function statusString(): void {
+// function statusString2(): void {
 //   let testString: Status = "";
 //   let testNum: Status = 8; // Incorrect type
 // }
 
 // type Status = "Assigned To Dev" | "In Progress" | "Completed";
-// function statusString(): void {
+// function statusString3(): void {
 //   let currTaskStatus: Status = "Assigned To Dev";
 //   let fakeTaskStatus: Status = "Test"; // Incorrect type (even though it's a string!)
 // }
